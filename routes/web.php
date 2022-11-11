@@ -25,7 +25,9 @@ Route::get('/users/{id}/comments', [CommentController::class, 'index'])->name('c
 Route::get('/users/show/{user}/comments/{id}', [CommentController::class, 'show'])->name('comments.show');
 Route::get('/users/{id}/comments/create', [CommentController::class, 'create'])->name('comments.create');
 Route::post('/users/{id}/comments/store', [CommentController::class, 'store'])->name('comments.store');
+Route::put('/users/{id}/comments/update', [CommentController::class, 'update'])->name('comments.update');
 Route::get('/users/{user}/comments/{id}', [CommentController::class, 'edit'])->name('comments.edit');
+Route::delete('/users/comments/{user}/{id}', [CommentController::class, 'destroy'])->name('comments.delete');
 
 
 

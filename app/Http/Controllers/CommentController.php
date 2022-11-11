@@ -118,9 +118,12 @@ class CommentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($user, $id)
     {
-        dd($id);
+        if(!$comment = $this->model->find($id))
+            return redirect()->route('comments.index', $user);
+        $this->model->destroy($id);
+            return redirect()->route('comments.index', $user);
     }
 
     
