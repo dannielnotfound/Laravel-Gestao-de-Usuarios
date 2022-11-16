@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreUpdateUserFormRequest;
+use App\Models\Comment;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -15,6 +16,7 @@ class UserController extends Controller
     public function __construct(User $user)
     {
         $this->model = $user;
+
     }
 
 
@@ -57,7 +59,7 @@ class UserController extends Controller
 
         
         if($request->image){
-            $data['image']  = $request->image->storeAs('users');
+            $data['image']  = $request->image->store('users');
         }
 
         $this->model->create($data); 
@@ -105,6 +107,7 @@ class UserController extends Controller
     public function delete($id){
         if(!$user = $this->model->find($id))
             return redirect()->route('users.index');
+
         $this->model->destroy($id);
         return redirect()->route('users.index');
         
