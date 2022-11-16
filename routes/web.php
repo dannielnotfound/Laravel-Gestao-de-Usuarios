@@ -1,5 +1,6 @@
 <?php
 
+
 use App\Http\Controllers\{
     CommentController,
     UserController
@@ -30,4 +31,4 @@ Route::get('/users/{user}/comments/{id}', [CommentController::class, 'edit'])->n
 Route::delete('/users/comments/{user}/{id}', [CommentController::class, 'destroy'])->name('comments.delete');
 
 
-
+require __DIR__.'/auth.php';
